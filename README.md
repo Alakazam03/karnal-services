@@ -19,6 +19,7 @@ Karnal's go-to for real construction rates and trusted local services—so you k
 - ✅ **WhatsApp Lead Form** — Client-side form → `wa.me` click-to-chat (no backend)
 - ✅ **Sticky Call CTA** — Mobile-friendly "Call when ready" button
 - ✅ **GA4** — Custom events: `calculator_submit`, `file_download` (rate card), `generate_lead` (WhatsApp)
+- ✅ **Blog (programmatic SEO)** — Content collection at `/blog`; add `.md` files in `src/content/blog/` to scale.
 
 ## Setup
 
@@ -68,6 +69,16 @@ src/
   react/
     ConstructionCostCalculator.tsx
 ```
+
+## Blog (programmatic SEO)
+
+- **Index:** `/blog` — lists all posts (newest first).
+- **Posts:** `/blog/[id]` — one page per post; URL `id` = filename without `.md`.
+- **Content:** Add Markdown files in `src/content/blog/` with frontmatter:
+  - `title`, `description`, `pubDate` (required)
+  - `serviceSlug` (optional) — links post to a service page and shows a CTA.
+  - `keywords` (optional) — for meta.
+- **SEO:** Each post gets Article JSON-LD, dynamic OG image, canonical URL, and internal links to service pages. Add a new `.md` file to scale; no code changes.
 
 ## Service Niches
 

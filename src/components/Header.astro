@@ -10,6 +10,12 @@ const services = getAllServices();
       Karnal Services
     </a>
     <nav class="flex flex-wrap items-center gap-2 text-sm">
+      <a
+        href="/blog"
+        class="rounded-md px-2 py-1 text-stone-600 no-underline hover:bg-stone-100 hover:text-stone-900"
+      >
+        Blog
+      </a>
       {services.map((s) => (
         <a
           href={`/service/${s.slug}`}

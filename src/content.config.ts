@@ -1,16 +1,15 @@
-// src/content/config.ts — Content collections schema for programmatic blog SEO
+// src/content.config.ts — Content Layer: programmatic blog for scalable SEO
 import { defineCollection } from 'astro:content';
-import { z } from 'astro:schema';
+import { glob } from 'astro/loaders';
+import { z } from 'astro/zod';
 
 const blog = defineCollection({
-  type: 'content',
+  loader: glob({ pattern: '**/*.md', base: './src/content/blog' }),
   schema: z.object({
     title: z.string(),
     description: z.string(),
     pubDate: z.coerce.date(),
-    /** Optional: related service slug for internal linking and CTA */
     serviceSlug: z.string().optional(),
-    /** Optional: keywords for meta (not displayed) */
     keywords: z.array(z.string()).optional()
   })
 });
