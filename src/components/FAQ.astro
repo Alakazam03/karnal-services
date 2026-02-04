@@ -1,0 +1,26 @@
+---
+// src/components/FAQ.astro — Accordion-style FAQs; pass faqs array from niche config
+interface Props {
+  faqs: { question: string; answer: string }[];
+}
+const { faqs } = Astro.props;
+---
+
+<section class="rounded-xl border border-stone-200 bg-white p-6 shadow-sm" aria-labelledby="faq-heading">
+  <h2 id="faq-heading" class="mb-4 text-lg font-semibold text-stone-900">Common questions</h2>
+  <ul class="space-y-2">
+    {faqs.map((faq, i) => (
+      <li class="border-b border-stone-100 last:border-0">
+        <details class="group">
+          <summary class="cursor-pointer list-none py-3 font-medium text-stone-900 marker:contents [&::-webkit-details-marker]:hidden">
+            <span class="flex items-center justify-between gap-2">
+              {faq.question}
+              <span class="text-stone-400 transition group-open:rotate-180" aria-hidden="true">▼</span>
+            </span>
+          </summary>
+          <p class="pb-3 pl-0 text-sm text-stone-600">{faq.answer}</p>
+        </details>
+      </li>
+    ))}
+  </ul>
+</section>

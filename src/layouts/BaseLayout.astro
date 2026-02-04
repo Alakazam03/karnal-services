@@ -1,0 +1,79 @@
+---
+// src/layouts/BaseLayout.astro — Shared layout with meta, Header, StickyCall
+import Header from '../components/Header.astro';
+import StickyCall from '../components/StickyCall.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  canonical?: string;
+  ogImage?: string;
+  ogLabel?: string;
+  noIndex?: boolean;
+}
+
+const { title, description, canonical, ogImage, ogLabel, noIndex = false } = Astro.props;
+const siteTitle = title.includes('Karnal') ? title : `${title} | Karnal`;
+const desc = description ?? "Karnal's go-to for real construction rates and trusted local services.";
+const baseUrl = Astro.url.origin;
+const canonicalUrl = canonical ? new URL(canonical, baseUrl).href : Astro.url.href;
+const ogImg = ogImage ?? `${baseUrl}/api/og.png?label=${encodeURIComponent('Karnal Local Services')}`;
+const gaId = import.meta.env.PUBLIC_GA4_MEASUREMENT_ID as string | undefined;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    {gaId && (
+      <>
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`} />
+        <script is:inline define:vars={{ gaId }}>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){ dataLayer.push(arguments); }
+          gtag('js', new Date());
+          gtag('config', gaId);
+        </script>
+      </>
+    )}
+    <title>{siteTitle}</title>
+    <meta name="description" content={desc} />
+    {noIndex && <meta name="robots" content="noindex,nofollow" />}
+    <link rel="canonical" href={canonicalUrl} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={siteTitle} />
+    <meta property="og:description" content={desc} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={ogImg} />
+    <meta property="og:locale" content="en_IN" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={siteTitle} />
+    <meta name="twitter:description" content={desc} />
+    <meta name="twitter:image" content={ogImg} />
+    <meta name="geo.region" content="IN-HR" />
+    <meta name="geo.placename" content="Karnal" />
+  </head>
+  <body class="min-h-screen bg-stone-50 text-stone-900 antialiased">
+    <Header />
+    <main class="pb-24 md:pb-8">
+      <slot />
+    </main>
+    <StickyCall />
+    {gaId && (
+      <script is:inline>
+        document.addEventListener('click', function(e) {
+          var a = e.target && e.target.closest ? e.target.closest('a[href*="rate-card.pdf"]') : null;
+          if (a && window.gtag) {
+            window.gtag('event', 'file_download', {
+              file_name: 'Karnal-Material-Rate-Card-2026.pdf',
+              link_url: a.getAttribute('href') || '/api/rate-card.pdf'
+            });
+          }
+        });
+      </script>
+    )}
+  </body>
+</html>

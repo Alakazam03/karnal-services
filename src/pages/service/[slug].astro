@@ -1,0 +1,96 @@
+---
+// src/pages/service/[slug].astro — Programmatic niche page: JSON-LD, OG, calculator, FAQ, lead form
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import FAQ from '../../components/FAQ.astro';
+import LeadForm from '../../components/LeadForm.astro';
+import ConstructionCostCalculator from '../../react/ConstructionCostCalculator';
+import { getServiceBySlug, getAllServices, isValidSlug } from '../../lib/services';
+
+export function getStaticPaths() {
+  return getAllServices().map((s) => ({ params: { slug: s.slug }, props: { service: s } }));
+}
+
+interface Props {
+  service: import('../../lib/services').ServiceNiche;
+}
+const { service } = Astro.props;
+const baseUrl = Astro.url.origin;
+const canonical = `/service/${service.slug}`;
+const ogImageUrl = `${baseUrl}/api/og.png?label=${encodeURIComponent(service.ogLabel)}`;
+---
+
+<BaseLayout
+  title={service.title}
+  description={service.description}
+  canonical={canonical}
+  ogImage={ogImageUrl}
+  ogLabel={service.ogLabel}
+>
+<div class="mx-auto max-w-3xl px-4 py-10">
+  <article>
+    <h1 class="mb-4 text-3xl font-bold text-stone-900">{service.ogLabel}</h1>
+    <p class="mb-6 text-lg text-stone-600">{service.description}</p>
+    <p class="mb-8 text-stone-600">
+      See the maths first. Use the calculator and rate card—then call when you're ready. No pressure.
+    </p>
+
+    {service.calculatorType === 'construction' && (
+      <div class="mb-10">
+        <ConstructionCostCalculator client:visible />
+      </div>
+    )}
+
+    <section class="mb-10">
+      <h2 class="mb-4 text-xl font-semibold text-stone-900">Karnal Material Rate Card 2026</h2>
+      <p class="mb-4 text-sm text-stone-600">
+        Labour, material, and a clear per sq.ft idea so you're not going in blind.
+      </p>
+      <a
+        href="/api/rate-card.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-block rounded-lg bg-emerald-600 px-4 py-2 font-medium text-white no-underline hover:bg-emerald-700"
+      >
+        Download rate card
+      </a>
+    </section>
+
+    <div class="mb-10">
+      <FAQ faqs={service.faqs} />
+    </div>
+
+    <div class="mb-10">
+      <LeadForm serviceLabel={service.ogLabel} serviceSlug={service.slug} />
+    </div>
+  </article>
+</div>
+
+{/* JSON-LD: LocalBusiness + FAQPage */}
+<Fragment set:html={`
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LocalBusiness",
+      "name": "${service.ogLabel}",
+      "description": ${JSON.stringify(service.description)},
+      "areaServed": { "@type": "City", "name": "Karnal", "containedInPlace": { "@type": "State", "name": "Haryana" } },
+      "url": "${baseUrl}${canonical}",
+      "address": { "@type": "PostalAddress", "addressLocality": "Karnal", "addressRegion": "Haryana", "addressCountry": "IN" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": ${JSON.stringify(
+        service.faqs.map((f) => ({
+          '@type': 'Question',
+          name: f.question,
+          acceptedAnswer: { '@type': 'Answer', text: f.answer }
+        }))
+      )}
+    }
+  ]
+}
+</script>
+`} />
+</BaseLayout>

@@ -1,0 +1,55 @@
+---
+// src/pages/index.astro — Home: belief hook, four niches, CTA order
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getAllServices } from '../lib/services';
+const services = getAllServices();
+---
+
+<BaseLayout
+  title="Karnal Local Services – Construction Rates, Calculator & Rate Card"
+  description="Karnal's go-to for real construction rates and trusted local services. See the maths first—calculator and rate card—then call when you're ready. Civil, interior, solar, pest control."
+>
+<div class="mx-auto max-w-3xl px-4 py-12">
+  <h1 class="mb-4 text-3xl font-bold text-stone-900">
+    I don't trust random quotes; I want to see the basis first.
+  </h1>
+  <p class="mb-6 text-lg text-stone-600">
+    Show the basis—calculator + rate card—then offer the call. One place for civil construction, false ceiling, solar, and pest control in Karnal.
+  </p>
+  <p class="mb-8 text-stone-600">
+    Use the calculator first. Download the rate card. Then call when you're ready. No pressure—just clarity.
+  </p>
+
+  <section class="mb-10">
+    <h2 class="mb-4 text-xl font-semibold text-stone-900">Services in Karnal</h2>
+    <ul class="grid gap-4 sm:grid-cols-2">
+      {services.map((s) => (
+        <li>
+          <a
+            href={`/service/${s.slug}`}
+            class="block rounded-xl border border-stone-200 bg-white p-4 no-underline shadow-sm transition hover:border-emerald-300 hover:shadow"
+          >
+            <span class="font-medium text-stone-900">{s.ogLabel}</span>
+            <span class="mt-1 block text-sm text-stone-600">{s.description.slice(0, 80)}…</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="rounded-xl border border-stone-200 bg-stone-100 p-6">
+    <h2 class="mb-2 text-lg font-semibold text-stone-900">Karnal Material Rate Card 2026</h2>
+    <p class="mb-4 text-sm text-stone-600">
+      Labour, material, and a clear per sq.ft idea so you're not going in blind.
+    </p>
+    <a
+      href="/api/rate-card.pdf"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-block rounded-lg bg-emerald-600 px-4 py-2 font-medium text-white no-underline hover:bg-emerald-700"
+    >
+      Download rate card
+    </a>
+  </section>
+</div>
+</BaseLayout>
