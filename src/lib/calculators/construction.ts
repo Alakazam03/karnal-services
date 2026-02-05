@@ -1,8 +1,8 @@
 // src/lib/calculators/construction.ts — Per sq.ft construction cost (labour + material) for Karnal
 
-/** Default labour and material rates (₹/sq.ft) for Karnal — replace with real rates */
-export const DEFAULT_LABOUR_RATE_PER_SQFT = 50;
-export const DEFAULT_MATERIAL_RATE_PER_SQFT = 60;
+/** Default labour and material rates (₹/sq.ft) for Karnal 2026 — basic finish */
+export const DEFAULT_LABOUR_RATE_PER_SQFT = 450;
+export const DEFAULT_MATERIAL_RATE_PER_SQFT = 1400;
 
 export interface ConstructionInput {
   areaSqft: number;

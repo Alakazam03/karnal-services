@@ -1,40 +1,40 @@
 ---
-title: Solar Panel Cost in Karnal 2026 – 1kW, 2kW, 3kW Guide
-description: Solar installation prices in Karnal. 1kW, 2kW, 3kW capacity vs cost, what to ask installers, and subsidy options. Local guide for 2026.
+title: Karnal Mein Solar Panel Cost 2026 – 1kW, 2kW, 3kW Guide
+description: Karnal mein solar installation prices. 1kW, 2kW, 3kW capacity vs cost, installers se kya poochna hai, aur subsidy options. 2026 ke liye local guide.
 pubDate: 2026-02-01
 serviceSlug: solar-installation-karnal
 keywords: [solar panel cost Karnal, solar installation Karnal, 2kW solar price Karnal, 3kW solar Karnal]
 ---
 
-Thinking solar? We've put Karnal installation prices in one place. See capacity vs cost, what to ask installers, and subsidy options. Know the range first. Then call when you're ready.
+Solar soch rahe ho? Humne Karnal installation prices ek jagah rakhe hain. Capacity vs cost dekho, installers se kya poochna hai, aur subsidy options. Pehle range jaano. Phir jab ready ho tab call karo.
 
-## What is solar panel cost in Karnal for 1kW, 2kW, 3kW?
+## Karnal mein 1kW, 2kW, 3kW solar panel cost kitna hai?
 
-Solar cost in Karnal depends on:
+Karnal mein solar cost depend karta hai:
 
-- **Capacity** – 1kW, 2kW, 3kW (and higher). More capacity means more panels and usually a higher total cost, but lower per-unit cost.
+- **Capacity** – 1kW, 2kW, 3kW (aur higher). Zyada capacity matlab zyada panels aur usually higher total cost, par lower per-unit cost.
 - **Equipment** – Panel brand, inverter type (on-grid, hybrid, etc.).
-- **Labour** – Installation and wiring.
+- **Labour** – Installation aur wiring.
 
-Prices are approximate. Get written quotes from local installers; our [Solar page](/service/solar-installation-karnal) gives you a baseline for Karnal.
+Prices approximate hain. Local installers se written quotes lo; hamara [Solar page](/service/solar-installation-karnal) Karnal ke liye baseline deta hai.
 
-## How to choose solar capacity for your Karnal home
+## Karnal ke ghar ke liye solar capacity kaise choose karein
 
-- **Monthly units** – How much you use (from your bill). Installers often suggest capacity so generation covers a part of your usage.
-- **Roof space** – Enough unshaded area for panels.
-- **Budget** – 2–3 kW is common for homes. Start with a quote and compare.
+- **Monthly units** – Kitna use karte ho (bill se dekho). Installers aksar capacity suggest karte hain taaki generation usage ka part cover kare.
+- **Roof space** – Panels ke liye enough unshaded area chahiye.
+- **Budget** – Gharon ke liye 2–3 kW common hai. Quote lo aur compare karo.
 
-Use our guide and then confirm with an installer. [See Solar Installation in Karnal](/service/solar-installation-karnal).
+Hamara guide use karo aur installer se confirm karo. [Karnal mein Solar Installation dekho](/service/solar-installation-karnal).
 
-## Subsidy and financing for solar in Haryana / Karnal
+## Haryana / Karnal mein solar ke liye subsidy aur financing
 
-Central and state schemes can reduce cost. Ask installers for:
+Central aur state schemes se cost kam ho sakti hai. Installers se poocho:
 
-- Subsidy eligibility and paperwork
-- Financing or loan options
+- Subsidy eligibility aur paperwork
+- Financing ya loan options
 
-We've linked to local info where possible on our [Solar page](/service/solar-installation-karnal).
+Humne jahan possible hai local info link ki hai hamari [Solar page](/service/solar-installation-karnal) pe.
 
-## Where to get solar installation quotes in Karnal
+## Karnal mein solar installation quotes kahan se milenge
 
-Use this page to understand prices first. Then call or WhatsApp when you're ready—we connect you with local solar installers in Karnal. [Go to Solar Installation – Karnal](/service/solar-installation-karnal).
+Is page se pehle prices samjho. Phir jab ready ho tab call ya WhatsApp karo—hum Karnal ke local solar installers se connect karte hain. [Solar Installation – Karnal pe jao](/service/solar-installation-karnal).

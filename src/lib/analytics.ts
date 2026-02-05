@@ -39,10 +39,15 @@ export function gaRateCardDownload(): void {
 }
 
 /** Fired when user submits the WhatsApp lead form (before opening WhatsApp). */
-export function gaWhatsAppLead(params: { service_slug: string; service_label: string }): void {
+export function gaWhatsAppLead(params: { 
+  service_slug: string; 
+  service_label: string;
+  budget?: string;
+}): void {
   gaEvent('generate_lead', {
     method: 'whatsapp',
     service_slug: params.service_slug,
-    service_label: params.service_label
+    service_label: params.service_label,
+    ...(params.budget && { budget: params.budget })
   });
 }

@@ -104,17 +104,42 @@ src/
 
 ## Default Rates
 
-Construction calculator uses default rates (replace in `src/lib/calculators/construction.ts`):
-- Labour: ₹50/sq.ft
-- Material: ₹60/sq.ft
+Construction calculator uses default rates for Karnal 2026 (basic finish):
+- Labour: ₹450/sq.ft
+- Material: ₹1,400/sq.ft
+- Total: ₹1,850/sq.ft
 
-Update these with real Karnal rates.
+For premium finish, rates can go up to ₹3,500/sq.ft total. Update in `src/lib/calculators/construction.ts`.
 
 ## Deployment
 
-Built for Node.js (standalone mode). Deploy to:
-- Vercel (with Node.js runtime)
-- Railway
-- Any Node.js host
+Built for Node.js (standalone mode). API routes (`/api/rate-card.pdf`, `/api/og.png`) run server-side; pages are pre-rendered static.
 
-API routes (`/api/rate-card.pdf`, `/api/og.png`) run server-side; pages are pre-rendered static.
+### Deploy for free
+
+**Option A: Vercel (recommended)** — Free hobby tier, minimal config.
+
+1. Install the Vercel adapter and switch to it (so API routes run as serverless):
+   ```bash
+   npx astro add vercel
+   ```
+2. Push your repo to GitHub and import the project at [vercel.com](https://vercel.com).
+3. Add environment variables in the Vercel dashboard: `PUBLIC_WHATSAPP_NUMBER`, `PUBLIC_PHONE_NUMBER`, and optionally `PUBLIC_GA4_MEASUREMENT_ID`.
+4. Deploy. Vercel will build and host the site; `/api/rate-card.pdf` and `/api/og.png` run as serverless functions.
+
+**Option B: Render** — Free tier (service spins down after ~15 min inactivity; cold start on next visit).
+
+1. Create a **Web Service** at [render.com](https://render.com), connect your GitHub repo.
+2. **Build command:** `npm install && npm run build`
+3. **Start command:** `node ./dist/server/entry.mjs`
+4. Set env vars in the Render dashboard. Free tier uses 512 MB RAM.
+
+**Option C: Railway** — Free $5/month credit; good for always-on.
+
+1. Connect repo at [railway.app](https://railway.app), create a new project from the repo.
+2. **Build:** `npm install && npm run build`
+3. **Start:** `node ./dist/server/entry.mjs`
+4. Add env vars in the Railway project. Expose the service via a generated domain.
+
+**Option D: Keep Node adapter (any Node host)**  
+Deploy to any Node.js host (VPS, Fly.io, etc.). Build with `npm run build`, then run `node ./dist/server/entry.mjs`. Set `HOST=0.0.0.0` and `PORT` as required by the host.

@@ -1,29 +1,154 @@
 ---
-// src/components/Header.astro — Site nav and branding
+// src/components/Header.astro — Site nav with mobile hamburger menu
 import { getAllServices } from '../lib/services';
 const services = getAllServices();
+const tel = import.meta.env.PUBLIC_PHONE_NUMBER || '919876543210';
+const telLink = `tel:+${tel.replace(/\D/g, '')}`;
 ---
 
 <header class="sticky top-0 z-40 border-b border-stone-200 bg-white/95 backdrop-blur">
   <div class="mx-auto flex max-w-4xl items-center justify-between gap-4 px-4 py-3">
     <a href="/" class="font-semibold text-stone-900 no-underline hover:text-stone-700">
-      Karnal Services
+      Karnal Local Services
     </a>
-    <nav class="flex flex-wrap items-center gap-2 text-sm">
+    
+    <!-- Desktop nav (hidden on mobile) -->
+    <nav class="hidden items-center gap-2 text-sm md:flex">
       <a
-        href="/blog"
+        href="/"
         class="rounded-md px-2 py-1 text-stone-600 no-underline hover:bg-stone-100 hover:text-stone-900"
       >
-        Blog
+        Home
       </a>
       {services.map((s) => (
         <a
           href={`/service/${s.slug}`}
           class="rounded-md px-2 py-1 text-stone-600 no-underline hover:bg-stone-100 hover:text-stone-900"
         >
-          {s.ogLabel.replace(' – Karnal', '')}
+          {s.navLabel}
         </a>
       ))}
+      <a
+        href="/blog"
+        class="rounded-md px-2 py-1 text-stone-600 no-underline hover:bg-stone-100 hover:text-stone-900"
+      >
+        Blog
+      </a>
     </nav>
+
+    <!-- Hamburger button (visible on mobile) -->
+    <button
+      id="menu-toggle"
+      type="button"
+      class="flex h-10 w-10 items-center justify-center rounded-lg text-stone-600 hover:bg-stone-100 md:hidden"
+      aria-label="Open menu"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
+      <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
   </div>
 </header>
+
+<!-- Mobile menu overlay (hidden by default) -->
+<div
+  id="mobile-menu"
+  class="fixed inset-0 z-50 hidden flex-col bg-white"
+  aria-hidden="true"
+>
+  <div class="flex items-center justify-between border-b border-stone-200 px-4 py-3">
+    <span class="font-semibold text-stone-900">Menu</span>
+    <button
+      id="menu-close"
+      type="button"
+      class="flex h-10 w-10 items-center justify-center rounded-lg text-stone-600 hover:bg-stone-100"
+      aria-label="Close menu"
+    >
+      <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
+  
+  <nav class="flex flex-1 flex-col overflow-y-auto px-4 py-4">
+    <a
+      href="/"
+      class="rounded-lg px-3 py-3 text-lg font-medium text-stone-900 no-underline hover:bg-stone-100"
+    >
+      Home
+    </a>
+    
+    <div class="mt-4 border-t border-stone-100 pt-4">
+      <span class="px-3 text-xs font-semibold uppercase tracking-wider text-stone-500">Services Karnal Mein</span>
+      <div class="mt-2 flex flex-col">
+        {services.map((s) => (
+          <a
+            href={`/service/${s.slug}`}
+            class="rounded-lg px-3 py-3 text-stone-700 no-underline hover:bg-stone-100"
+          >
+            {s.navLabel}
+          </a>
+        ))}
+      </div>
+    </div>
+    
+    <div class="mt-4 border-t border-stone-100 pt-4">
+      <a
+        href="/blog"
+        class="rounded-lg px-3 py-3 text-lg font-medium text-stone-900 no-underline hover:bg-stone-100"
+      >
+        Blog
+      </a>
+    </div>
+  </nav>
+  
+  <!-- Call button at bottom of mobile menu -->
+  <div class="border-t border-stone-200 p-4">
+    <a
+      href={telLink}
+      class="flex items-center justify-center gap-2 rounded-lg bg-emerald-600 px-4 py-3 font-medium text-white no-underline hover:bg-emerald-700"
+    >
+      <span aria-hidden="true">📞</span>
+      Jab ready ho, call karo
+    </a>
+  </div>
+</div>
+
+<script>
+  const menuToggle = document.getElementById('menu-toggle');
+  const menuClose = document.getElementById('menu-close');
+  const mobileMenu = document.getElementById('mobile-menu');
+  
+  function openMenu() {
+    mobileMenu?.classList.remove('hidden');
+    mobileMenu?.classList.add('flex');
+    mobileMenu?.setAttribute('aria-hidden', 'false');
+    menuToggle?.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+  
+  function closeMenu() {
+    mobileMenu?.classList.add('hidden');
+    mobileMenu?.classList.remove('flex');
+    mobileMenu?.setAttribute('aria-hidden', 'true');
+    menuToggle?.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+  
+  menuToggle?.addEventListener('click', openMenu);
+  menuClose?.addEventListener('click', closeMenu);
+  
+  // Close menu when clicking a link
+  mobileMenu?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', closeMenu);
+  });
+  
+  // Close menu on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !mobileMenu?.classList.contains('hidden')) {
+      closeMenu();
+    }
+  });
+</script>

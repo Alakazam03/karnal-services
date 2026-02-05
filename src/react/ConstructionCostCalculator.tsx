@@ -41,10 +41,10 @@ export default function ConstructionCostCalculator() {
   return (
     <section className="rounded-xl border border-stone-200 bg-white p-6 shadow-sm" aria-labelledby="calculator-heading">
       <h2 id="calculator-heading" className="mb-4 text-lg font-semibold text-stone-900">
-        Construction cost calculator
+        Construction cost estimate karo
       </h2>
       <p className="mb-4 text-sm text-stone-600">
-        See the maths first. Labour + material per sq.ft—then compare quotes with confidence.
+        Area sq.ft mein dalo. Hum Karnal ke default labour + material rates use karte hain; aap change kar sakte ho. Result approximate hai—quotes compare karne ke liye use karo.
       </p>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
@@ -59,7 +59,7 @@ export default function ConstructionCostCalculator() {
             value={areaSqft}
             onChange={(e) => setAreaSqft(e.target.value)}
             className="w-full rounded-lg border border-stone-300 px-3 py-2 text-stone-900 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"
-            placeholder="e.g. 1200"
+            placeholder="jaise 1200"
           />
         </div>
         <div className="grid grid-cols-2 gap-4">
@@ -96,22 +96,27 @@ export default function ConstructionCostCalculator() {
           type="submit"
           className="w-full rounded-lg bg-emerald-600 px-4 py-3 font-medium text-white hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
         >
-          Calculate cost
+          Cost calculate karo
         </button>
       </form>
       {result && (
         <div className="mt-6 rounded-lg bg-stone-100 p-4">
-          <p className="mb-2 font-medium text-stone-900">Estimated cost</p>
+          <p className="mb-2 font-medium text-stone-900">Total estimated cost</p>
           <p className="text-2xl font-bold text-stone-900">
             ₹{result.total.toLocaleString('en-IN')}
           </p>
           <ul className="mt-2 space-y-1 text-sm text-stone-600">
-            <li>Labour: ₹{result.labourTotal.toLocaleString('en-IN')}</li>
-            <li>Material: ₹{result.materialTotal.toLocaleString('en-IN')}</li>
+            <li>Labour total: ₹{result.labourTotal.toLocaleString('en-IN')}</li>
+            <li>Material total: ₹{result.materialTotal.toLocaleString('en-IN')}</li>
           </ul>
-          <p className="mt-3 text-sm text-stone-500">
-            Know the range—then call when you're ready.
-          </p>
+          <a
+            href="/api/rate-card.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-4 inline-block text-sm font-medium text-emerald-600 hover:underline"
+          >
+            Full rate card 2026 download karo
+          </a>
         </div>
       )}
     </section>

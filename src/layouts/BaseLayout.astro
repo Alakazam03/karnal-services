@@ -22,7 +22,7 @@ const gaId = import.meta.env.PUBLIC_GA4_MEASUREMENT_ID as string | undefined;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="hi">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -48,7 +48,7 @@ const gaId = import.meta.env.PUBLIC_GA4_MEASUREMENT_ID as string | undefined;
     <meta property="og:description" content={desc} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:image" content={ogImg} />
-    <meta property="og:locale" content="en_IN" />
+    <meta property="og:locale" content="hi_IN" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={siteTitle} />
     <meta name="twitter:description" content={desc} />
@@ -61,6 +61,10 @@ const gaId = import.meta.env.PUBLIC_GA4_MEASUREMENT_ID as string | undefined;
     <main class="pb-24 md:pb-8">
       <slot />
     </main>
+    <footer class="border-t border-stone-200 bg-white px-4 py-6 text-center text-sm text-stone-600">
+      <p class="mb-2">Karnal ke liye bana. No spam, no pressure—sirf clarity.</p>
+      <p class="text-xs text-stone-500">Kuch services hum khud bhi karte hain. Pehle rate card dekho, phir baat karo.</p>
+    </footer>
     <StickyCall />
     {gaId && (
       <script is:inline>

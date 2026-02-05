@@ -1,48 +1,48 @@
 ---
-title: How to Use a Construction Cost Calculator Before Calling Contractors
-description: Use a per sq.ft calculator to get a ballpark cost, then compare quotes. Step-by-step for Karnal—labour, material, and when to call.
+title: Contractors Ko Call Karne Se Pehle Construction Cost Calculator Kaise Use Karein
+description: Per sq.ft calculator se ballpark cost lo, phir quotes compare karo. Karnal ke liye step-by-step—labour, material, aur kab call karna hai.
 pubDate: 2026-01-20
 serviceSlug: civil-construction-cost-karnal
 keywords: [construction cost calculator, estimate building cost, compare contractor quotes]
 ---
 
-You don't have to call 10 people to know "kitna lagega." Use a construction cost calculator first. Get a number. Then talk to contractors with confidence.
+"Kitna lagega" jaanne ke liye 10 logon ko call nahi karna padta. Pehle construction cost calculator use karo. Number lo. Phir contractors se confidence se baat karo.
 
-## Why use a calculator before calling?
+## Call karne se pehle calculator kyun use karein?
 
-- **Same basis** – Area × rate (labour + material) so every quote is comparable.
-- **No jargon** – Enter sq.ft and rates; see total and breakdown.
-- **Less guesswork** – When you know the range, you can spot a fair quote.
+- **Same basis** – Area × rate (labour + material) taaki har quote comparable ho.
+- **Koi jargon nahi** – Sq.ft aur rates dalo; total aur breakdown dekho.
+- **Kam guesswork** – Jab range pata ho, fair quote spot kar sakte ho.
 
-Contractors quote different numbers. A calculator gives you the basis—then you decide who to call.
+Contractors alag alag batate hain. Calculator basis deta hai—phir tum decide karo kisko call karna hai.
 
-## Step 1: Know your area
+## Step 1: Apna area jaano
 
-Measure or estimate your built-up area in **sq.ft**. For a new build, use the covered area you plan. For a room or extension, use that area. The calculator multiplies this by the rate.
+Built-up area **sq.ft mein** measure ya estimate karo. Naya build hai toh planned covered area use karo. Room ya extension ke liye wo area use karo. Calculator isko rate se multiply karta hai.
 
-## Step 2: Get labour and material rates (or use defaults)
+## Step 2: Labour aur material rates lo (ya defaults use karo)
 
-Labour and material are often quoted **per sq.ft** in Karnal. You can:
+Karnal mein labour aur material aksar **per sq.ft** quote hoti hain. Tum:
 
-- Use our [default Karnal rates](/service/civil-construction-cost-karnal) in the calculator.
-- Or plug in rates from our [rate card](/api/rate-card.pdf) or a quote you already have.
+- Calculator mein hamari [default Karnal rates](/service/civil-construction-cost-karnal) use kar sakte ho.
+- Ya hamari [rate card](/api/rate-card.pdf) se ya jo quote pehle se hai usse rates daal sakte ho.
 
-Splitting labour and material helps you see where each contractor is pricing.
+Labour aur material alag karne se pata chalta hai har contractor kahan pricing kar raha hai.
 
-## Step 3: Run the calculator
+## Step 3: Calculator run karo
 
-Enter area and (optionally) labour and material per sq.ft. The calculator shows:
+Area dalo aur (optional) labour aur material per sq.ft. Calculator dikhata hai:
 
 - Total estimated cost
 - Labour total
 - Material total
 
-Use this as a **ballpark**. Real quotes will vary by design, finish, and contractor.
+Isko **ballpark** ki tarah use karo. Real quotes design, finish, aur contractor ke hisaab se vary hongi.
 
-## Step 4: Compare quotes
+## Step 4: Quotes compare karo
 
-When contractors quote, ask for a **labour vs material** split if they don't give it. Compare with your calculator result. You're not guessing—you're checking.
+Jab contractors quote dein, **labour vs material** split maango agar nahi de rahe. Apne calculator result se compare karo. Guess nahi kar rahe—check kar rahe ho.
 
-## Step 5: Call when you're ready
+## Step 5: Jab ready ho tab call karo
 
-Use the calculator and rate card first. Then call or WhatsApp when you have a number in mind. No pressure—just clarity. [Try the calculator on our Civil Construction page](/service/civil-construction-cost-karnal).
+Pehle calculator aur rate card use karo. Phir jab number samajh aaye tab call ya WhatsApp karo. Koi pressure nahi—sirf clarity. [Hamari Civil Construction page pe calculator try karo](/service/civil-construction-cost-karnal).

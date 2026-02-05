@@ -40,18 +40,18 @@ const service = entry.data.serviceSlug ? getServiceBySlug(entry.data.serviceSlug
     </div>
     {service && (
       <aside class="mt-10 rounded-xl border border-stone-200 bg-stone-50 p-6">
-        <h2 class="text-lg font-semibold text-stone-900">Next step</h2>
+        <h2 class="text-lg font-semibold text-stone-900">Agla step</h2>
         <p class="mt-1 text-sm text-stone-600">{service.description}</p>
         <a
           href={`/service/${service.slug}`}
           class="mt-4 inline-block rounded-lg bg-emerald-600 px-4 py-2 font-medium text-white no-underline hover:bg-emerald-700"
         >
-          {service.calculatorType === 'construction' ? 'See calculator & rates' : `See ${service.ogLabel}`}
+          {service.calculatorType === 'construction' ? 'Calculator & rates dekho' : `${service.ogLabel} dekho`}
         </a>
       </aside>
     )}
     <p class="mt-8 text-sm text-stone-500">
-      <a href="/blog" class="text-emerald-600 no-underline hover:underline">← All posts</a>
+      <a href="/blog" class="text-emerald-600 no-underline hover:underline">← Saare posts</a>
       <span class="mx-2">·</span>
       <a href="/" class="text-emerald-600 no-underline hover:underline">Home</a>
     </p>

@@ -10,13 +10,13 @@ const posts = (await getCollection('blog')).sort(
 
 <BaseLayout
   title="Blog – Karnal Local Services"
-  description="Construction rates, calculator tips, false ceiling, solar, and pest control in Karnal. See the maths first—then call when you're ready."
+  description="Karnal mein construction rates, calculator tips, false ceiling, solar, aur pest control. Pehle numbers dekho—phir jab ready ho tab call karo."
   canonical="/blog"
 >
   <div class="mx-auto max-w-3xl px-4 py-10">
     <h1 class="mb-4 text-3xl font-bold text-stone-900">Blog</h1>
     <p class="mb-8 text-lg text-stone-600">
-      Construction rates, calculator tips, false ceiling, solar, and pest control in Karnal. Real numbers—no jargon.
+      Karnal mein construction rates, calculator tips, false ceiling, solar, aur pest control. Real numbers—koi jargon nahi.
     </p>
     <ul class="space-y-6">
       {posts.map((post) => (
@@ -35,7 +35,7 @@ const posts = (await getCollection('blog')).sort(
       ))}
     </ul>
     <p class="mt-8 text-sm text-stone-500">
-      <a href="/" class="text-emerald-600 no-underline hover:underline">← Back to home</a>
+      <a href="/" class="text-emerald-600 no-underline hover:underline">← Home pe wapas jao</a>
     </p>
   </div>
 </BaseLayout>

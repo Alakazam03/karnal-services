@@ -1,10 +1,10 @@
 ---
-// src/pages/service/[slug].astro — Programmatic niche page: JSON-LD, OG, calculator, FAQ, lead form
+// src/pages/service/[slug].astro — Programmatic niche page: hero, intro, calculator, FAQ, rate card CTA, related services
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import FAQ from '../../components/FAQ.astro';
 import LeadForm from '../../components/LeadForm.astro';
 import ConstructionCostCalculator from '../../react/ConstructionCostCalculator';
-import { getServiceBySlug, getAllServices, isValidSlug } from '../../lib/services';
+import { getServiceBySlug, getAllServices } from '../../lib/services';
 
 export function getStaticPaths() {
   return getAllServices().map((s) => ({ params: { slug: s.slug }, props: { service: s } }));
@@ -17,6 +17,7 @@ const { service } = Astro.props;
 const baseUrl = Astro.url.origin;
 const canonical = `/service/${service.slug}`;
 const ogImageUrl = `${baseUrl}/api/og.png?label=${encodeURIComponent(service.ogLabel)}`;
+const relatedServices = getAllServices().filter((s) => s.slug !== service.slug);
 ---
 
 <BaseLayout
@@ -28,11 +29,14 @@ const ogImageUrl = `${baseUrl}/api/og.png?label=${encodeURIComponent(service.ogL
 >
 <div class="mx-auto max-w-3xl px-4 py-10">
   <article>
-    <h1 class="mb-4 text-3xl font-bold text-stone-900">{service.ogLabel}</h1>
-    <p class="mb-6 text-lg text-stone-600">{service.description}</p>
-    <p class="mb-8 text-stone-600">
-      See the maths first. Use the calculator and rate card—then call when you're ready. No pressure.
-    </p>
+    <h1 class="mb-4 text-3xl font-bold text-stone-900">{service.heroHeadline}</h1>
+    <p class="lead mb-6 text-lg text-stone-600">{service.heroLead}</p>
+
+    <div class="mb-8 space-y-4 text-stone-600">
+      {service.introText.map((p) => (
+        <p>{p}</p>
+      ))}
+    </div>
 
     {service.calculatorType === 'construction' && (
       <div class="mb-10">
@@ -40,24 +44,42 @@ const ogImageUrl = `${baseUrl}/api/og.png?label=${encodeURIComponent(service.ogL
       </div>
     )}
 
-    <section class="mb-10">
-      <h2 class="mb-4 text-xl font-semibold text-stone-900">Karnal Material Rate Card 2026</h2>
-      <p class="mb-4 text-sm text-stone-600">
-        Labour, material, and a clear per sq.ft idea so you're not going in blind.
-      </p>
+    <div class="mb-10">
+      <FAQ faqs={service.faqs} />
+    </div>
+
+    <section class="mb-10 rounded-xl border border-stone-200 bg-stone-100 p-6">
+      <h2 class="mb-4 text-xl font-semibold text-stone-900">{service.rateCardHeading}</h2>
+      <p class="mb-4 text-sm text-stone-600">{service.rateCardBody}</p>
       <a
         href="/api/rate-card.pdf"
         target="_blank"
         rel="noopener noreferrer"
         class="inline-block rounded-lg bg-emerald-600 px-4 py-2 font-medium text-white no-underline hover:bg-emerald-700"
       >
-        Download rate card
+        {service.rateCardButton}
       </a>
     </section>
 
-    <div class="mb-10">
-      <FAQ faqs={service.faqs} />
-    </div>
+    <section class="mb-10">
+      <h2 class="mb-4 text-xl font-semibold text-stone-900">Karnal mein aur services</h2>
+      <p class="mb-4 text-sm text-stone-600">
+        Civil, interior, solar, aur pest control—sab ek jagah.
+      </p>
+      <ul class="grid gap-4 sm:grid-cols-2">
+        {relatedServices.map((s) => (
+          <li>
+            <a
+              href={`/service/${s.slug}`}
+              class="block rounded-xl border border-stone-200 bg-white p-4 no-underline shadow-sm transition hover:border-emerald-300 hover:shadow"
+            >
+              <span class="font-medium text-stone-900">{s.cardTitle}</span>
+              <span class="mt-1 block text-sm text-emerald-600">→ {s.cardLinkText}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
 
     <div class="mb-10">
       <LeadForm serviceLabel={service.ogLabel} serviceSlug={service.slug} />
